@@ -10,5 +10,33 @@ body {
   background-position: center;
   max-height: 100%;
   max-width: 100%;
+  height: 100%;
+}
+.game-board-container {
+  border: 2px solid blue;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-page-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.game-board {
+  border: 2px solid red;
   margin: 0 auto;
+  height: 28.5em;
+  width: 28.5em;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+
+.square {
+  border: .5px solid #D8BFD8;
+  height: 150px;
+  width: 150px
 }
