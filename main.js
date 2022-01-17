@@ -13,9 +13,11 @@ function placeToken(event) {
   var squareId = event.target.id;
   if(!clickedSquare.innerHTML) {
     clickedSquare.innerHTML = `${newGame.currentPlayer.token}`;
-    newGame.updateSquare();
+    newGame.updateSquare(squareId);
     newGame.switchTurns();
+    console.log(newGame.currentPlayer)
     newGame.turnsTaken += 1;
+    return;
 
   }
 

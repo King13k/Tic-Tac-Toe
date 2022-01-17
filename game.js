@@ -18,9 +18,11 @@ class Game {
   switchTurns() {
     if(this.sunTurn === true) {
       this.moonTurn = true;
+      this.sunTurn = false;
       this.currentPlayer =  this.moon;
     } else if (this.moonTurn === true) {
       this.sunTurn = true;
+      this.moonTurn = false;
       this.currentPlayer = this.sun;
     }
   }

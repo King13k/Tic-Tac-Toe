@@ -13,7 +13,6 @@ body {
   height: 100%;
 }
 .game-board-container {
-  border: 2px solid blue;
   height: 75%;
   display: flex;
   justify-content: center;
@@ -26,7 +25,6 @@ body {
 }
 
 .game-board {
-  border: 2px solid red;
   margin: 0 auto;
   height: 28.5em;
   width: 28.5em;
