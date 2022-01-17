@@ -1,3 +1,4 @@
+var newGame = new Game();
 // querySelectors
 var boardSpaces = document.querySelectorAll('.square');
 var gameBoard = document.querySelector('.game-board');
@@ -7,7 +8,6 @@ var playerTurn = document.querySelector('.current-turn');
 gameBoard.addEventListener('click', placeToken);
 
 //Global Variables
-var newGame = new Game();
 
 function placeToken(event) {
   var clickedSquare = event.target;
@@ -25,9 +25,16 @@ function placeToken(event) {
 
  function showCurrentPlayer() {
    if (newGame.sunTurn) {
-     playerTurn.innerHTML = `<h1>${newGame.currentPlayer.token}, Your Turn</h1>`
+     playerTurn.innerHTML = `<h1>${newGame.currentPlayer.token}, Your UP!</h1>`
    } else if (newGame.moonTurn) {
-     playerTurn.innerHTML = `<h1>${newGame.currentPlayer.token}, Your Turn</h1>`
+     playerTurn.innerHTML = `<h1>${newGame.currentPlayer.token}, Your UP!</h1>`
    }
+ }
+ 
+ function hide(element) {
+  element.classList.add('hidden');
+ }
 
+ function show(element) {
+   element.classList.remove('hidden');
  }
