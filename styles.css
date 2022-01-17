@@ -1,13 +1,14 @@
 html {
   height: 100%;
   width: 100%;
+  color: white;
 }
 
 header {
   color: white;
   height: 20px;
   text-align: center;
-  margin-top: -1.0em;
+  margin-top: -1em;
 }
 
 body {
@@ -27,8 +28,17 @@ body {
 }
 
 .main-page-frame {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player-icon {
+  font-size: 8em;
+  
 }
 
 .game-board {
@@ -38,6 +48,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3,1fr);
 }
+
 
 
 .square {
