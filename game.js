@@ -12,8 +12,6 @@ class Game {
 
   updateSquare(squareId) {
     var currentSquare = squareId;
-    console.log(currentSquare)
-    console.log(this.sun.token)
     this.squares[currentSquare] = this.currentPlayer.token;
   }
 
@@ -47,9 +45,20 @@ class Game {
     if (this.winCombinations(this.sun.token)) {
       this.sun.wins++
       declareSunWin();
-    } else if(this.winCombinations(this.moon.token)){
+      resetGame();
+    }
+
+    if(this.winCombinations(this.moon.token)){
       this.moon.wins++
       declareMoonWin();
+      resetGame();
     }
   }
-  }
+}
+
+  // showDraw() {
+  //   if(this.turnsTaken === 9 && !this.declareWinner()) {
+  //     hide(currentTurn)
+  //   }
+  // }
+  // }
