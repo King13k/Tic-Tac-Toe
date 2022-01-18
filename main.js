@@ -6,7 +6,8 @@ var gameBoard = document.querySelector('.game-board');
 var playerTurn = document.querySelector('.current-turn');
 var sunWin = document.querySelector('.player1-wins');
 var moonWin = document.querySelector('.player2-wins');
-var displayWinner = document.querySelector('.winner')
+var displayWinner = document.querySelector('.winner');
+var drawMessage = document.querySelector('.draw');
 
 //Event Listeners
 gameBoard.addEventListener('click', placeToken);
@@ -23,7 +24,7 @@ function placeToken(event) {
     newGame.turnsTaken += 1;
     showCurrentPlayer();
     newGame.declareWinner();
-    return;
+    // return;
   }
 }
 
@@ -56,14 +57,18 @@ function declareMoonWin() {
     <div class="square square8" id=8></div>
     <div class="square square9" id=9></div>`
     showCurrentPlayer();
+    newGame.moon.wins = 0;
+    newGame.sun.wins = 0;
+    newGame.turnsTaken = 0;
     newGame.squares = ['','','','','','','','',''];
  }
 
 
 
- // function hide(element) {
- //  element.classList.add('hidden');
- // }
- //
- // function show(element) {
- //   element.classList.remove('hidden');
+ function hide(element) {
+  element.classList.add('hidden');
+ }
+
+ function show(element) {
+   element.classList.remove('hidden');
+}

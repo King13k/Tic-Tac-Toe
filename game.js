@@ -13,6 +13,7 @@ class Game {
   updateSquare(squareId) {
     var currentSquare = squareId;
     this.squares[currentSquare] = this.currentPlayer.token;
+    console.log(this.currentPlayer.id)
   }
 
   switchTurns() {
@@ -35,30 +36,36 @@ class Game {
     this.squares[2] === token && this.squares[5] === token && this.squares[8] ||
     this.squares[3] === token && this.squares[6] === token && this.squares[9] ||
     this.squares[1] === token && this.squares[5] === token && this.squares[9] ||
-    this.squares[7] === token && this.squares[5] === token && this.squares[3]) {
+    this.squares[3] === token && this.squares[5] === token && this.squares[7]) {
       return true;
     }
       return false;
   }
 
   declareWinner() {
-    if (this.winCombinations(this.sun.token)) {
+    var sunWin = this.winCombinations(`${this.sun.token}`);
+    var moonWin = this.winCombinations(`${this.moon.token}`);
+
+
+
+    if (sunWin) {
+      console.log('sunWin',this.currentPlayer.id)
+
       this.sun.wins++
       declareSunWin();
       resetGame();
-    }
-
-    if(this.winCombinations(this.moon.token)){
+    } else if(moonWin){
       this.moon.wins++
       declareMoonWin();
       resetGame();
     }
   }
-}
 
-  // showDraw() {
-  //   if(this.turnsTaken === 9 && !this.declareWinner()) {
-  //     hide(currentTurn)
-  //   }
-  // }
-  // }
+//   showDraw() {
+//     if(this.turnsTaken === 9 && !this.declareWinner()) {
+//       console.log('draw');
+//       hide(currentTurn);
+//       show(drawMessage);
+//   }
+// }
+ }
