@@ -13,6 +13,7 @@ class Game {
   updateSquare(squareId) {
     var currentSquare = squareId;
     console.log(currentSquare)
+    console.log(this.sun.token)
     this.squares[currentSquare] = this.currentPlayer.token;
   }
 
@@ -37,6 +38,18 @@ class Game {
     this.squares[3] === token && this.squares[6] === token && this.squares[9] ||
     this.squares[1] === token && this.squares[5] === token && this.squares[9] ||
     this.squares[7] === token && this.squares[5] === token && this.squares[3]) {
+      return true;
+    }
+      return false;
+  }
+
+  declareWinner() {
+    if (this.winCombinations(this.sun.token)) {
+      this.sun.wins++
+      declareSunWin();
+    } else if(this.winCombinations(this.moon.token)){
+      this.moon.wins++
+      declareMoonWin();
     }
   }
-}
+  }

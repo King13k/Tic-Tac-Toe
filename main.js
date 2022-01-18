@@ -3,6 +3,8 @@ var newGame = new Game();
 var boardSpaces = document.querySelectorAll('.square');
 var gameBoard = document.querySelector('.game-board');
 var playerTurn = document.querySelector('.current-turn');
+var sunWin = document.querySelector('.player1-wins');
+var moonWin = document.querySelector('.player2-wins');
 
 //Event Listeners
 gameBoard.addEventListener('click', placeToken);
@@ -16,11 +18,19 @@ function placeToken(event) {
     clickedSquare.innerHTML = `${newGame.currentPlayer.token}`;
     newGame.updateSquare(squareId);
     newGame.switchTurns();
-    console.log(newGame.currentPlayer)
     newGame.turnsTaken += 1;
     showCurrentPlayer();
+    newGame.declareWinner();
     return;
   }
+}
+
+function declareSunWin() {
+ sunWin.innerHTML = `${newGame.sun.wins}`;
+}
+
+function declareMoonWin() {
+ moonWin.innerHTML = `${newGame.moon.wins}`;
 }
 
  function showCurrentPlayer() {
@@ -30,7 +40,11 @@ function placeToken(event) {
      playerTurn.innerHTML = `<h1>${newGame.currentPlayer.token}, Your UP!</h1>`
    }
  }
- 
+
+ function win(){
+   console.log('sunWins');
+ }
+
  function hide(element) {
   element.classList.add('hidden');
  }
