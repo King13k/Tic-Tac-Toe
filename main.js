@@ -1,3 +1,4 @@
+
 var newGame = new Game();
 // querySelectors
 var boardSpaces = document.querySelectorAll('.square');
@@ -5,6 +6,8 @@ var gameBoard = document.querySelector('.game-board');
 var playerTurn = document.querySelector('.current-turn');
 var sunWin = document.querySelector('.player1-wins');
 var moonWin = document.querySelector('.player2-wins');
+var displayWinner = document.querySelector('.winner');
+var drawMessage = document.querySelector('.draw');
 
 //Event Listeners
 gameBoard.addEventListener('click', placeToken);
@@ -17,20 +20,24 @@ function placeToken(event) {
   if (!clickedSquare.innerHTML) {
     clickedSquare.innerHTML = `${newGame.currentPlayer.token}`;
     newGame.updateSquare(squareId);
+    newGame.showDraw();
+    newGame.declareWinner();
     newGame.switchTurns();
     newGame.turnsTaken += 1;
     showCurrentPlayer();
-    newGame.declareWinner();
     return;
   }
 }
 
 function declareSunWin() {
+  console.log('declareSunWin')
  sunWin.innerHTML = `${newGame.sun.wins}`;
+ displayWinner.innerHTML = `<h1 class='win-message'>Sun Wins!</h1>`;
 }
 
 function declareMoonWin() {
  moonWin.innerHTML = `${newGame.moon.wins}`;
+ displayWinner.innerHTML = `<h1 class='win-message'>Moon Wins!</h1>`;
 }
 
  function showCurrentPlayer() {
@@ -41,9 +48,25 @@ function declareMoonWin() {
    }
  }
 
- function win(){
-   console.log('sunWins');
+ function resetGame() {
+   gameBoard.innerHTML =  `<div class="square square1" id=1></div>
+    <div class="square square2" id=2></div>
+    <div class="square square3" id=3></div>
+    <div class="square square4" id=4></div>
+    <div class="square square5" id=5></div>
+    <div class="square square6" id=6></div>
+    <div class="square square7" id=7></div>
+    <div class="square square8" id=8></div>
+    <div class="square square9" id=9></div>`
+    showCurrentPlayer();
+    newGame.moon.wins = 0;
+    newGame.sun.wins = 0;
+    newGame.turnsTaken = 0;
+    newGame.squares = ['','','','','','','','',''];
  }
+
+
+
 
  function hide(element) {
   element.classList.add('hidden');
@@ -51,4 +74,4 @@ function declareMoonWin() {
 
  function show(element) {
    element.classList.remove('hidden');
- }
+}

@@ -38,7 +38,7 @@ body {
 
 .player-icon {
   font-size: 8em;
-  
+
 }
 
 .game-board {
@@ -49,6 +49,14 @@ body {
   grid-template-columns: repeat(3,1fr);
 }
 
+.win-message {
+  font-size: 3vh;
+  padding: 3vh;
+}
+
+.hidden {
+  display: none;
+}
 
 
 .square {
