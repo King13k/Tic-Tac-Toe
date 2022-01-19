@@ -20,22 +20,24 @@ function placeToken(event) {
   if (!clickedSquare.innerHTML) {
     clickedSquare.innerHTML = `${newGame.currentPlayer.token}`;
     newGame.updateSquare(squareId);
+    newGame.showDraw();
+    newGame.declareWinner();
     newGame.switchTurns();
     newGame.turnsTaken += 1;
     showCurrentPlayer();
-    newGame.declareWinner();
-    // return;
+    return;
   }
 }
 
 function declareSunWin() {
+  console.log('declareSunWin')
  sunWin.innerHTML = `${newGame.sun.wins}`;
- playerTurn.innerHTML = `<h1 class='win-message'>Sun Wins!</h1>`;
+ displayWinner.innerHTML = `<h1 class='win-message'>Sun Wins!</h1>`;
 }
 
 function declareMoonWin() {
  moonWin.innerHTML = `${newGame.moon.wins}`;
- playerTurn.innerHTML = `<h1 class='win-message'>Moon Wins!</h1>`;
+ displayWinner.innerHTML = `<h1 class='win-message'>Moon Wins!</h1>`;
 }
 
  function showCurrentPlayer() {
@@ -62,6 +64,7 @@ function declareMoonWin() {
     newGame.turnsTaken = 0;
     newGame.squares = ['','','','','','','','',''];
  }
+
 
 
 

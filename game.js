@@ -13,7 +13,6 @@ class Game {
   updateSquare(squareId) {
     var currentSquare = squareId;
     this.squares[currentSquare] = this.currentPlayer.token;
-    console.log(this.currentPlayer.id)
   }
 
   switchTurns() {
@@ -29,14 +28,14 @@ class Game {
   }
 
   winCombinations(token) {
-    if (this.squares[1] === token && this.squares[2] === token && this.squares[3] ||
-    this.squares[4] === token && this.squares[5] === token && this.squares[6] ||
-    this.squares[7] === token && this.squares[8] === token && this.squares[9] ||
-    this.squares[1] === token && this.squares[4] === token && this.squares[7] ||
-    this.squares[2] === token && this.squares[5] === token && this.squares[8] ||
-    this.squares[3] === token && this.squares[6] === token && this.squares[9] ||
-    this.squares[1] === token && this.squares[5] === token && this.squares[9] ||
-    this.squares[3] === token && this.squares[5] === token && this.squares[7]) {
+    if (this.squares[1] === token && this.squares[2] === token && this.squares[3] === token ||
+    this.squares[4] === token && this.squares[5] === token && this.squares[6] === token ||
+    this.squares[7] === token && this.squares[8] === token && this.squares[9] === token ||
+    this.squares[1] === token && this.squares[4] === token && this.squares[7] === token ||
+    this.squares[2] === token && this.squares[5] === token && this.squares[8] === token ||
+    this.squares[3] === token && this.squares[6] === token && this.squares[9] === token ||
+    this.squares[1] === token && this.squares[5] === token && this.squares[9] === token ||
+    this.squares[3] === token && this.squares[5] === token && this.squares[7] === token ) {
       return true;
     }
       return false;
@@ -45,27 +44,24 @@ class Game {
   declareWinner() {
     var sunWin = this.winCombinations(`${this.sun.token}`);
     var moonWin = this.winCombinations(`${this.moon.token}`);
-
-
-
     if (sunWin) {
-      console.log('sunWin',this.currentPlayer.id)
-
       this.sun.wins++
       declareSunWin();
-      resetGame();
-    } else if(moonWin){
+      setTimeout(resetGame, 3000)
+      return true;
+    }
+     if (moonWin) {
       this.moon.wins++
       declareMoonWin();
-      resetGame();
+      setTimeout(resetGame, 3000)
+      return true
     }
   }
 
-//   showDraw() {
-//     if(this.turnsTaken === 9 && !this.declareWinner()) {
-//       console.log('draw');
-//       hide(currentTurn);
-//       show(drawMessage);
-//   }
-// }
+  showDraw() {
+    if(this.turnsTaken === 9 && !this.declareWinner()) {
+      hide(currentTurn);
+      show(drawMessage);
+  }
+}
  }
