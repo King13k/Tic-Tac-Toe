@@ -8,7 +8,6 @@ class Game {
     this.currentPlayer = this.sun;
     this.squares = ['','','','','','','','','']
     this.draw = false;
-    // this.squares is for win condition
   }
 
   updateSquare(squareId) {
@@ -26,8 +25,7 @@ class Game {
       this.sunTurn = true;
       this.moonTurn = false;
       this.currentPlayer = this.sun;
-    }
-    console.log(this.turnsTaken)
+    };
   }
 
   winCombinations(token) {
@@ -45,20 +43,17 @@ class Game {
   }
 
   declareWinner() {
-    // debugger
     var sunWin = this.winCombinations(`${this.sun.token}`);
     var moonWin = this.winCombinations(`${this.moon.token}`);
     if (sunWin) {
       this.sun.wins++
       declareSunWin();
       setTimeout(resetGame, 2000)
-      // return true;
     } else if (moonWin) {
       this.moon.wins++
       declareMoonWin();
       setTimeout(resetGame, 2000)
-      // return true
-    }
+    };
   }
 
    declareDraw() {
@@ -67,8 +62,6 @@ class Game {
      if (this.turnsTaken === 9 && !sunWin && !moonWin) {
       this.draw = true;
       declareTie();
-      console.log('<<<<<')
-    }
-
+    };
  }
 }

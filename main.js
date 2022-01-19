@@ -22,7 +22,6 @@ function placeToken(event) {
     newGame.switchTurns();
     newGame.declareWinner();
     newGame.declareDraw();
-
     showCurrentPlayer();
     return;
   }
@@ -64,8 +63,6 @@ function declareTie() {
     <div class="square square8" id=8></div>
     <div class="square square9" id=9></div>`
     showCurrentPlayer();
-    // newGame.moon.wins = 0;
-    // newGame.sun.wins = 0;
     newGame.turnsTaken = 0;
     newGame.squares = ['','','','','','','','',''];
  }
