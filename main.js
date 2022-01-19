@@ -1,7 +1,6 @@
 
 var newGame = new Game();
 // querySelectors
-var boardSpaces = document.querySelectorAll('.square');
 var gameBoard = document.querySelector('.game-board');
 var playerTurn = document.querySelector('.current-turn');
 var sunWin = document.querySelector('.player1-wins');
@@ -20,17 +19,16 @@ function placeToken(event) {
   if (!clickedSquare.innerHTML) {
     clickedSquare.innerHTML = `${newGame.currentPlayer.token}`;
     newGame.updateSquare(squareId);
-    newGame.showDraw();
-    newGame.declareWinner();
     newGame.switchTurns();
-    newGame.turnsTaken += 1;
+    newGame.declareWinner();
+    newGame.declareDraw();
+
     showCurrentPlayer();
     return;
   }
 }
 
 function declareSunWin() {
-  console.log('declareSunWin')
  sunWin.innerHTML = `${newGame.sun.wins}`;
  displayWinner.innerHTML = `<h1 class='win-message'>Sun Wins!</h1>`;
 }
@@ -38,6 +36,13 @@ function declareSunWin() {
 function declareMoonWin() {
  moonWin.innerHTML = `${newGame.moon.wins}`;
  displayWinner.innerHTML = `<h1 class='win-message'>Moon Wins!</h1>`;
+}
+
+function declareTie() {
+  if (newGame.draw === true) {
+  displayWinner.innerHTML = `<h1 class='win-message'>It's a Tie!</h1>`
+  setTimeout(resetGame, 2000);
+  }
 }
 
  function showCurrentPlayer() {
@@ -59,16 +64,13 @@ function declareMoonWin() {
     <div class="square square8" id=8></div>
     <div class="square square9" id=9></div>`
     showCurrentPlayer();
-    newGame.moon.wins = 0;
-    newGame.sun.wins = 0;
+    // newGame.moon.wins = 0;
+    // newGame.sun.wins = 0;
     newGame.turnsTaken = 0;
     newGame.squares = ['','','','','','','','',''];
  }
 
-
-
-
- function hide(element) {
+  function hide(element) {
   element.classList.add('hidden');
  }
 
